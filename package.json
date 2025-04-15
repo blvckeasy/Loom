@@ -1,0 +1,20 @@
+{
+  "name": "express-with-rabbitmq",
+  "version": "1.0.0",
+  "description": "",
+  "main": "./src/server.js",
+  "scripts": {
+    "start": "node --env-file=.env ./src/server.js",
+    "dev": "nodemon --env-file=.env ./src/server.js"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "type": "module",
+  "dependencies": {
+    "amqplib": "^0.10.7",
+    "body-parser": "^2.2.0",
+    "dotenv": "^16.5.0",
+    "express": "^5.1.0"
+  }
+}
