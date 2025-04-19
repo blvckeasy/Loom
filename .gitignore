@@ -3,3 +3,7 @@
 *.txt
 
 *-lock.json
+
+*.pem
+
+/dist

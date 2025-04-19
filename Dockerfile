@@ -13,6 +13,9 @@ RUN npm install
 # Copy the rest of your application code
 COPY . .
 
+# Build the TypeScript code
+RUN npm run build
+
 # Expose the port your app runs on (adjust if needed)
 EXPOSE 3000
 
