@@ -12,13 +12,19 @@
   "license": "ISC",
   "type": "commonjs",
   "dependencies": {
+    "@types/body-parser": "^1.19.5",
     "amqplib": "^0.10.7",
     "body-parser": "^2.2.0",
+    "cors": "^2.8.5",
+    "docker-names": "^1.2.1",
     "dotenv": "^16.5.0",
-    "express": "^5.1.0"
+    "express": "^5.1.0",
+    "uuid": "^11.1.0",
+    "vhost": "^3.0.2"
   },
   "devDependencies": {
     "@types/amqplib": "^0.10.7",
+    "@types/cors": "^2.8.17",
     "@types/dotenv": "^6.1.1",
     "@types/express": "^5.0.1",
     "@types/node": "^22.14.1",
