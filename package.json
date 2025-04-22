@@ -13,18 +13,22 @@
   "license": "ISC",
   "type": "commonjs",
   "dependencies": {
-    "@types/body-parser": "^1.19.5",
+    "@typegoose/typegoose": "^12.14.0",
     "amqplib": "^0.10.7",
+    "bcrypt": "^5.1.1",
     "body-parser": "^2.2.0",
     "cors": "^2.8.5",
     "docker-names": "^1.2.1",
     "dotenv": "^16.5.0",
     "express": "^5.1.0",
+    "mongoose": "^8.13.2",
     "uuid": "^11.1.0",
     "vhost": "^3.0.2"
   },
   "devDependencies": {
     "@types/amqplib": "^0.10.7",
+    "@types/bcrypt": "^5.0.2",
+    "@types/body-parser": "^1.19.5",
     "@types/cors": "^2.8.17",
     "@types/dotenv": "^6.1.1",
     "@types/express": "^5.0.1",

@@ -1,14 +1,18 @@
 {
   "compilerOptions": {
     "noImplicitAny": false,
-    "target": "ES2020",
+    "target": "ES2022",
     "module": "CommonJS",
     "rootDir": "./src",
     "outDir": "./dist",
     "strict": true,
     "esModuleInterop": true,
     "resolveJsonModule": true,
-    "skipLibCheck": true
+    "skipLibCheck": true,
+    "experimentalDecorators": true,
+    "emitDecoratorMetadata": true,
+    "useDefineForClassFields": false,
+    "strictPropertyInitialization": false
   },
   "include": [
     "src"
