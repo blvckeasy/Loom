@@ -1,26 +1,38 @@
 import { Types } from "mongoose";
-import bcrypt from 'bcrypt';
+import bcrypt from "bcrypt";
 import { UserSchema } from "../../infrastructure/mongodb";
-
+import { UserRoleEnum, UserStatusEnum } from "../../infrastructure";
 
 export class UserEntity {
-    public _id:      Types.ObjectId;
-    public _email: string;
-    public _password: string;
-    public _createdAt: Date;
+    public _id:         Types.ObjectId;
+    public _email:      string;
+    public _password:   string;
+    public _status:     UserStatusEnum;
+    public _role:       UserRoleEnum;
+    public _createdAt:  Date;
 
-    buildId (id: Types.ObjectId): UserEntity {
+    buildId(id: Types.ObjectId): UserEntity {
         this._id = id;
         return this;
     }
 
-    buildEmail (email: string): UserEntity {
+    buildEmail(email: string): UserEntity {
         this._email = email;
         return this;
     }
 
-    buildPassword (password: string): UserEntity {
+    buildPassword(password: string): UserEntity {
         this._password = bcrypt.hashSync(password, 8);
+        return this;
+    }
+
+    buildStatus(status: UserStatusEnum): UserEntity {
+        this._status = status;
+        return this;
+    }
+
+    buildRole(role: UserRoleEnum): UserEntity {
+        this._role = role;
         return this;
     }
 
@@ -41,25 +53,37 @@ export class UserEntity {
         return this._password;
     }
 
+    getStatus(): UserStatusEnum {
+        return this._status;
+    }
+
+    getRole(): UserRoleEnum {
+        return this._role;
+    }
+
     getCreatedAt(): Date {
         return this._createdAt;
     }
 
-    convertToEntity (arg: UserSchema): UserEntity | null {
-        return arg ?
-            this.buildId(arg._id)
-                .buildEmail(arg.email)
-                .buildPassword(arg.password)
-                .buildCreatedAt(arg.createdAt)
+    convertToEntity(arg: UserSchema | null): UserEntity | null {
+        return arg
+            ? this.buildId(arg._id)
+                  .buildEmail(arg.email)
+                  .buildPassword(arg.password)
+                  .buildStatus(arg.status)
+                  .buildRole(arg.role)
+                  .buildCreatedAt(arg.createdAt)
             : null;
     }
 
     convertToSchema(): UserSchema {
         return {
             _id:        this._id,
-            email:   this._email,
+            email:      this._email,
             password:   this._password,
+            status:     this._status,
+            role:       this._role,
             createdAt:  this._createdAt,
-        }
+        };
     }
 }

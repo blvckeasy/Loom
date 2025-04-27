@@ -12,7 +12,9 @@
     "experimentalDecorators": true,
     "emitDecoratorMetadata": true,
     "useDefineForClassFields": false,
-    "strictPropertyInitialization": false
+    "strictPropertyInitialization": false,
+    "strictNullChecks": false,
+    "useUnknownInCatchVariables": false
   },
   "include": [
     "src"

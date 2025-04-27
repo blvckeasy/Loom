@@ -9,12 +9,12 @@ import {
 export abstract class BaseCRUDRepository<T extends BaseEntityInterface<T, K>, K>
     implements BaseCRUDRepositoryInterface<T>
 {
-    abstract create(arg: T): Promise<T>;
-    abstract update(arg: T): Promise<T>;
-    abstract getById(id: Types.ObjectId): Promise<T>;
+    abstract create(arg: T): Promise<T | null>;
+    abstract update(arg: T): Promise<T | null>;
+    abstract getById(_id: Types.ObjectId): Promise<T | null>;
     abstract list(
-        pagination?: PaginationInterface,
         filter?: FilterQuery<any>,
+        pagination?: PaginationInterface,
         sort?: any
     ): Promise<Array<T>>;
 
@@ -32,6 +32,9 @@ export abstract class BaseCRUDRepository<T extends BaseEntityInterface<T, K>, K>
         const entities: T[] = [];
         for (const item of _modelClassItems) {
             const entityObject = new TCreator().convertToEntity(item);
+
+            if (entityObject == null) continue;
+
             entities.push(entityObject);
         }
         return entities;

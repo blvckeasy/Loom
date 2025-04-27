@@ -1,5 +1,6 @@
 import { modelOptions, prop, Severity } from "@typegoose/typegoose";
 import { Types } from "mongoose";
+import { ProxyStatusEnum } from "../../enums";
 
 @modelOptions({
     options: {
@@ -8,13 +9,22 @@ import { Types } from "mongoose";
 })
 export class ProxySchema {
     @prop({ required: true })
-    protocol: string;
+    server_protocol: string;
 
     @prop({ required: true })
-    host: string;
+    server_subdomain: string;
 
     @prop({ required: true })
-    port: number;
+    server_host: string;
+
+    @prop({ required: true })
+    user_ip: string;
+
+    @prop({ required: true })
+    user_port: number;
+
+    @prop({ enum: ProxyStatusEnum, default: ProxyStatusEnum.ACTIVE })
+    status: ProxyStatusEnum;
 
     @prop({ type: Types.ObjectId, ref: 'users', required: true })
     user_id: Types.ObjectId;

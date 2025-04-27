@@ -1,15 +1,17 @@
 import express from 'express';
 import bodyParser from 'body-parser';
 import cors from 'cors';
-import { routes } from './subdomains'
+import { apiApp } from './subdomains'
+import vhost from 'vhost';
 
 const server = express();
+const host   = process.env.SERVER_HOST; 
+
+server.set('trust proxy', true);
 
 server.use(cors({ origin: "*" }));
-server.set('trust proxy', true);
 server.use(bodyParser.json());
 
-server.use("/v1", routes);
-
+server.use(vhost(`api.${host}`, apiApp));
 
 export default server;

@@ -36,4 +36,9 @@ export enum ErrorCodeEnum {
      *  Process errors
      */
     PROCESS_IS_PENDING_ERROR = 1200,
+
+    /**
+     * Internal Errors
+     */
+    INTERNAL_SERVER_ERROR = 500
 }

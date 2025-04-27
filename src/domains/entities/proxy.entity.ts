@@ -1,32 +1,51 @@
 import { Types } from "mongoose";
 import { ProxySchema } from "../../infrastructure/mongodb";
+import { ProxyStatusEnum } from "../../infrastructure";
 
 
 export class ProxyEntity {
-    public _id:         Types.ObjectId;
-    public _protocol:   string;
-    public _host:       string;
-    public _port:       number;
-    public _user_id:    Types.ObjectId;
-    public _createdAt:  Date;
+    public _id:                 Types.ObjectId;
+    public _server_protocol:    string;
+    public _server_subdomain:   string;
+    public _server_host:        string;
+    public _user_ip:            string;
+    public _user_port:          number;
+    public _status:             ProxyStatusEnum;
+    public _user_id:            Types.ObjectId;
+    public _createdAt:          Date;
 
     buildId (id: Types.ObjectId): ProxyEntity {
         this._id = id;
         return this;
     }
 
-    buildProtocol (protocol: string): ProxyEntity {
-        this._protocol = protocol;
-        return this;
-    }
-    
-    buildHost (host: string): ProxyEntity {
-        this._host = host;
+    buildServerProtocol (protocol: string): ProxyEntity {
+        this._server_protocol = protocol;
         return this;
     }
 
-    buildPort (port: number): ProxyEntity {
-        this._port = port;
+    buildServerSubdomain (subdomain: string): ProxyEntity {
+        this._server_subdomain = subdomain;
+        return this;
+    }
+    
+    buildServerHost (host: string): ProxyEntity {
+        this._server_host = host;
+        return this;
+    }
+
+    buildUserIP (ip: string): ProxyEntity {
+        this._user_ip = ip;
+        return this;
+    }
+
+    buildUserPort (port: number): ProxyEntity {
+        this._user_port = port;
+        return this;
+    }
+
+    buildStatus (status: ProxyStatusEnum): ProxyEntity {
+        this._status = status;
         return this;
     }
 
@@ -44,22 +63,37 @@ export class ProxyEntity {
         return this._id;
     }
 
-    getProtocol(): string {
-        return this._protocol;
+    getServerProtocol(): string {
+        return this._server_protocol;
     }
 
-    getHost(): string {
-        return this._host;
+    getServerSubdomain(): string {
+        return this._server_subdomain;
     }
 
-    getPort(): number {
-        return this._port;
+    getServerHost(): string {
+        return this._server_host;
+    }
+
+    getUserIP(): string {
+        return this._user_ip;
+    }
+
+    getUserPort(): number {
+        return this._user_port;
+    }
+
+    getProxyURL(): string {
+        return `${this._server_protocol}://${this._server_subdomain}.${this._server_host}`
+    }
+
+    getStatus(): ProxyStatusEnum {
+        return this._status;
     }
 
     getUserId(): Types.ObjectId {
         return this._user_id;
     }
-
 
     getCreatedAt(): Date {
         return this._createdAt;
@@ -68,9 +102,12 @@ export class ProxyEntity {
     convertToEntity (arg: ProxySchema): ProxyEntity | null {
         return arg ?
             this.buildId(arg._id)
-                .buildProtocol(arg.protocol)
-                .buildHost(arg.host)
-                .buildPort(arg.port)
+                .buildServerProtocol(arg.server_protocol)
+                .buildServerSubdomain(arg.server_subdomain)
+                .buildServerHost(arg.server_host)
+                .buildUserIP(arg.user_ip)
+                .buildUserPort(arg.user_port)
+                .buildStatus(arg.status)
                 .buildUserId(arg.user_id)
                 .buildCreatedAt(arg.createdAt)
             : null;
@@ -78,12 +115,15 @@ export class ProxyEntity {
 
     convertToSchema(): ProxySchema {
         return {
-            _id:        this._id,
-            protocol:   this._protocol,
-            host:       this._host,
-            port:       this._port,
-            user_id:    this._user_id,
-            createdAt:  this._createdAt,
+            _id:                this._id,
+            server_protocol:    this._server_protocol,
+            server_subdomain:   this._server_subdomain,
+            server_host:        this._server_host,
+            user_ip:            this._user_ip,
+            user_port:          this._user_port,
+            status:             this._status,
+            user_id:            this._user_id,
+            createdAt:          this._createdAt,
         }
     }
 }

@@ -3,9 +3,7 @@ dotenv.config({ path: ".env" });
 
 import { server } from "./infrastructure/express";
 import { rabbitmq } from "./infrastructure/rabbitmq";
-import { apiApp } from './infrastructure/express/subdomains'
 import { mongodb } from './infrastructure'
-import vhost from 'vhost';
 
 
 async function bootstrap () {
@@ -17,9 +15,7 @@ async function bootstrap () {
     await mongodb.init();
     await rabbitmq.init();
 
-    server.use(vhost(`api.${host}`, apiApp));
-
-    server.listen(port, () => {
+    server.listen(port, host, () => {
         console.log(`server is running. URL: ${url}`);
     })
 }

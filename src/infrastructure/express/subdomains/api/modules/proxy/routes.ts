@@ -3,12 +3,13 @@ import {
     GetProxyController,
     CreateProxyController,
 } from './controllers'
+import { CheckUserSessionMiddleware } from '../../../../middlewares';
 
 const proxyRouter = Router({ mergeParams: true });
 
 proxyRouter
-    .get('/get',            GetProxyController)
-    .post("/create-proxy",  CreateProxyController)
+    .get('/get',            CheckUserSessionMiddleware, GetProxyController)
+    .post("/create-proxy",  CheckUserSessionMiddleware, CreateProxyController)
 
 export default {
     path:   "/proxy",

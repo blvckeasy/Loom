@@ -1,2 +1,2 @@
 export * from './controllers';
-export { default as proxyRoutes } from './routes';
+export { default as proxyRoute } from './routes';

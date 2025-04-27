@@ -1,8 +1,8 @@
 import { Router, Request, Response, NextFunction } from 'express';
-import { proxyRoutes } from './proxy';
+import { proxyRoute } from './proxy';
 
 const routes = Router({ mergeParams: true });
 
-routes.use(proxyRoutes.path,    proxyRoutes.router);
+routes.use(proxyRoute.path,    proxyRoute.router);
 
 export default routes;

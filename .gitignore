@@ -7,3 +7,5 @@
 *.pem
 
 /dist
+
+logs/*
