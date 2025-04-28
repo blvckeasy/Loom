@@ -9,3 +9,7 @@
 /dist
 
 logs/*
+
+*.env
+
+!.env.example

@@ -1,7 +1,6 @@
 import { modelOptions, prop, Severity } from "@typegoose/typegoose";
 import { Types } from "mongoose";
-import { UserStatusEnum } from "../../enums/status";
-import { UserRoleEnum } from "../../enums";
+import { UserAccountVerificationStatusEnum, UserProfileStatusEnum, UserRoleEnum } from "../../enums";
 
 @modelOptions({
     options: {
@@ -9,19 +8,34 @@ import { UserRoleEnum } from "../../enums";
     },
 })
 export class UserSchema {
+    _id: Types.ObjectId;
+
     @prop({ required: true })
     email: string;
+
+    @prop()
+    name: string;
+
+    @prop()
+    given_name: string;
+
+    @prop()
+    family_name: string;
+
+    @prop()
+    picture: string;
     
-    @prop({ required: true })
+    @prop()
     password: string;
 
-    @prop({ enum: UserStatusEnum, default: UserStatusEnum.ACTIVE })
-    status: UserStatusEnum;
+    @prop({ enum: UserAccountVerificationStatusEnum, default: UserAccountVerificationStatusEnum.UNCONFIRMED })
+    verification_status: UserAccountVerificationStatusEnum;
+
+    @prop({ enum: UserProfileStatusEnum, default: UserProfileStatusEnum.ACTIVE })
+    profile_status: UserProfileStatusEnum;
     
     @prop({ enum: UserRoleEnum, default: UserRoleEnum.CLIENT })
     role: UserRoleEnum;
-
-    _id: Types.ObjectId;
 
     createdAt: Date;
 }

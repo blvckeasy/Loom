@@ -1,4 +1,4 @@
-import { BaseCaseInterface, InvalidTokenError, TokenExpiredError } from "../../infrastructure";
+import { BaseCaseInterface, InvalidTokenError, TokenExpiredError, tokenConfig } from "../../infrastructure";
 import { ErrorCodeEnum } from "../../infrastructure/enums";
 import { Token } from "../../services";
 import { UserEntity } from "../entities";
@@ -15,10 +15,7 @@ interface CheckUserSessionCaseReponse {
 export class CheckUserSessionCase implements BaseCaseInterface<CheckUserSessionCaseParams, CheckUserSessionCaseReponse> {
     async execute (params: CheckUserSessionCaseParams): Promise<CheckUserSessionCaseReponse> {
         try {
-            const jwtSecretKey: string      = String(process.env.JWT_SECRET);
-            const jwtExpireSeconds: number  = Number(process.env.JWT_TOKEN_EXPIRE_SECONDS);
-
-            const payload = new Token(jwtSecretKey, jwtExpireSeconds)
+            const payload = new Token(tokenConfig.access.secretKey, tokenConfig.access.expireSeconds)
                 .buildToken(params.accessToken)
                 .verify()
             

@@ -14,7 +14,7 @@ export class UserRepository
     implements UserRepositoryInterface
 {
     async create(_user: UserEntity): Promise<UserEntity | null> {
-        const requiredFields: string[] = ["_email", "_password"];
+        const requiredFields: string[] = ["_email"];
         this.checkRequiredFields(requiredFields, _user);
 
         const userToCreate: UserSchema = _user.convertToSchema();

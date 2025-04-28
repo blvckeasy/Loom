@@ -1,3 +1,4 @@
+export * from './authorization.error';
 export * from './base.error';
 export * from './fail-to-match.error';
 export * from './internal-server.error';

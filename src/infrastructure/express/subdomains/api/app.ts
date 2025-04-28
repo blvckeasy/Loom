@@ -1,10 +1,9 @@
 import express from 'express';
+import { routes } from './modules';
 import { ModernMiddleware } from '../../middlewares';
-import { proxyRoute } from './modules/proxy';
 
 const apiApp = express();
 
-apiApp.use(ModernMiddleware);
-apiApp.use(proxyRoute.path, proxyRoute.router);
+apiApp.use("/v1", ModernMiddleware, routes);
 
 export default apiApp;

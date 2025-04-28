@@ -44,12 +44,12 @@ export function sendError(error: any, req: express.Request, res: express.Respons
             break;
     }
 
-    if (status == 500) {
+    if (status == ErrorCodeEnum.INTERNAL_SERVER_ERROR) {
         writeErrorFile(error, req);
         return res.status(status).send({
             error: {
-                code: error.code,
-                message: new InternalServerError().translates[res.lang],
+                code: ErrorCodeEnum.INTERNAL_SERVER_ERROR,
+                message: new InternalServerError().translates[res.lang]
             },
             data: null,
         });
