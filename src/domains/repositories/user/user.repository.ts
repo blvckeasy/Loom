@@ -24,7 +24,7 @@ export class UserRepository
     }
 
     async update(_user: UserEntity): Promise<UserEntity | null> {
-        const requiredFields: string[] = ["_id", "_email"];
+        const requiredFields: string[] = ["_id"];
         this.checkRequiredFields(requiredFields, _user);
 
         const userToUpdate: UserSchema = _user.convertToSchema();

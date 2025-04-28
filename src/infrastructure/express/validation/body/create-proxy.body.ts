@@ -4,9 +4,9 @@ export class CreateProxyBody {
     
     port: number;
 
-    constructor(params: CreateProxyBody) {
-        if (params) {
-            this.port = params.port;
+    constructor(body: CreateProxyBody) {
+        if (body) {
+            this.port = body.port;
         }
     }
 

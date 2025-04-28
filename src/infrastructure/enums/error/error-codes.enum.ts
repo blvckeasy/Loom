@@ -6,6 +6,7 @@ export enum ErrorCodeEnum {
     AUTHORIZATION_ERROR = 2001,
     FILE_EXTENSION_ERROR = 2002,
     SYSTEM_ERROR = 2003,
+    UNAUTHORIZED = 2004,
 
     /**
      * Joi validation errors

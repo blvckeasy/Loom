@@ -1,13 +1,17 @@
 import { Router } from 'express';
 import { CheckUserSessionMiddleware } from '../../../../middlewares';
-import { GetGoogleURLController, GetGoogleCallbackController } from './controllers';
+import { 
+    GetGoogleURLController, 
+    GetGoogleCallbackController, 
+    UpdateAccountPasswordController,
+} from './controllers';
 
 const authRouter = Router({ mergeParams: true });
 
 authRouter
     .get('/google',             GetGoogleURLController)
     .get('/google/callback',    GetGoogleCallbackController)
-    // .post('/update-password',   )
+    .patch('/update-password',  CheckUserSessionMiddleware, UpdateAccountPasswordController)
 
 
 export default {

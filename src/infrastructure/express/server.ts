@@ -15,6 +15,6 @@ server.use(bodyParser.json());
 server.use(vhost(`api.${host}`, apiApp));
 
 // testoviy
-server.use(vhost(`${host}`, apiApp));
+// server.use(vhost(`${host}`, apiApp));
 
 export default server;

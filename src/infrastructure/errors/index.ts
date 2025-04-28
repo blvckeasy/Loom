@@ -7,4 +7,5 @@ export * from './not-found.error';
 export * from './requirement.error';
 export * from './token-expired.error';
 export * from './token-not-provided.error';
+export * from './user-not-found.error';
 export * from './validation.error';

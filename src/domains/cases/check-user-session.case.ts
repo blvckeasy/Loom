@@ -1,4 +1,4 @@
-import { BaseCaseInterface, InvalidTokenError, TokenExpiredError, tokenConfig } from "../../infrastructure";
+import { BaseCaseInterface, InvalidTokenError, NotFoundError, TokenExpiredError, UserNotFoundError, tokenConfig } from "../../infrastructure";
 import { ErrorCodeEnum } from "../../infrastructure/enums";
 import { Token } from "../../services";
 import { UserEntity } from "../entities";
@@ -21,6 +21,8 @@ export class CheckUserSessionCase implements BaseCaseInterface<CheckUserSessionC
             
             const user = await Repository.User().getById(payload['user_id']);
 
+            if (!user) throw new UserNotFoundError();
+
             const response: CheckUserSessionCaseReponse = { user }
             return response;
         } catch (error) {
@@ -30,6 +32,10 @@ export class CheckUserSessionCase implements BaseCaseInterface<CheckUserSessionC
     
             if (error.message === 'invalid signature' || error.message === 'jwt malformed') {
                 throw new InvalidTokenError();
+            }
+            
+            if (error instanceof UserNotFoundError) {
+                throw error;                
             }
             
             error.code = ErrorCodeEnum.AUTHORIZATION_ERROR;

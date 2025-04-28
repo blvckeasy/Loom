@@ -6,11 +6,11 @@ import { UserAccountVerificationStatusEnum, UserRoleEnum, UserProfileStatusEnum 
 export class UserEntity {
     public _id:                     Types.ObjectId;
     public _email:                  string;
-    public _name:                   string;
-    public _given_name:             string;
-    public _family_name:            string;
-    public _picture:                string;
-    public _password:               string;
+    public _name?:                  string;
+    public _given_name?:            string;
+    public _family_name?:           string;
+    public _picture?:               string;
+    public _password?:              string;
     public _verification_status:    UserAccountVerificationStatusEnum;
     public _profile_status:         UserProfileStatusEnum;
     public _role:                   UserRoleEnum;
