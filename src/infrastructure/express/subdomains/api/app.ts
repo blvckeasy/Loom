@@ -1,9 +1,9 @@
 import express from 'express';
-import { routes } from './modules';
+import { apiRoutes } from './modules';
 import { ModernMiddleware } from '../../middlewares';
 
 const apiApp = express();
 
-apiApp.use("/v1", ModernMiddleware, routes);
+apiApp.use("/v1", ModernMiddleware, apiRoutes);
 
 export default apiApp;

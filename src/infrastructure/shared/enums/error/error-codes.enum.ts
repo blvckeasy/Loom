@@ -41,5 +41,10 @@ export enum ErrorCodeEnum {
     /**
      * Internal Errors
      */
-    INTERNAL_SERVER_ERROR = 500
+    INTERNAL_SERVER_ERROR = 500,
+
+    /**
+     * Network Connection Error
+     */
+    NETWORK_CONNECTION_ERROR = 3000,
 }

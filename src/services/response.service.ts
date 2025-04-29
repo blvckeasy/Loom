@@ -15,6 +15,9 @@ export function sendError(error: any, req: express.Request, res: express.Respons
         case ErrorCodeEnum.NOT_FOUND:
             status = 404;
             break;
+        case ErrorCodeEnum.INTERNAL_SERVER_ERROR:
+            status = 500;
+            break;
         case ErrorCodeEnum.CONFIRMATION_CODE_INVALID:
             status = 412;
             break;
@@ -30,6 +33,9 @@ export function sendError(error: any, req: express.Request, res: express.Respons
         case ErrorCodeEnum.FILE_SIZE_LARGE_ERROR:
         case ErrorCodeEnum.GUEST_CANNOT_CREATE_ERROR:
         case ErrorCodeEnum.ACTIVE_PRODUCT_VARIANT_IS_REQUIRED_ERROR:
+        case ErrorCodeEnum.DELETE_MAIN_PRODUCT_VARIANT_ERROR:
+        case ErrorCodeEnum.VALIDATION_FAIL_TO_MATCH_ERROR:
+        case ErrorCodeEnum.VALIDATION_MATCH_EMPTY_ERROR:
             status = 400;
             break;
         case ErrorCodeEnum.TOKEN_EXPIRED_ERROR:
@@ -37,12 +43,26 @@ export function sendError(error: any, req: express.Request, res: express.Respons
         case ErrorCodeEnum.TOKEN_NOT_PROVIDED_ERROR:
         case ErrorCodeEnum.CLIENT_IS_NOT_ACTIVE:
         case ErrorCodeEnum.AUTHORIZATION_ERROR:
+        case ErrorCodeEnum.UNAUTHORIZED:
             status = 401;
+            break;
+        case ErrorCodeEnum.FILE_EXTENSION_ERROR:
+            status = 415; // Unsupported Media Type
+            break;
+        case ErrorCodeEnum.SYSTEM_ERROR:
+            status = 500;
+            break;
+        case ErrorCodeEnum.PROCESS_IS_PENDING_ERROR:
+            status = 409; // Conflict
+            break;
+        case ErrorCodeEnum.NETWORK_CONNECTION_ERROR:
+            status = 503; // Service Unavailable (network-related)
             break;
         default:
             status = 500;
             break;
     }
+    
 
     if (status == ErrorCodeEnum.INTERNAL_SERVER_ERROR) {
         writeErrorFile(error, req);

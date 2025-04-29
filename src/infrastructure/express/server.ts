@@ -3,13 +3,14 @@ import bodyParser from 'body-parser';
 import vhost from 'vhost';
 import cors from 'cors';
 import { rateLimit } from 'express-rate-limit';
-import { apiApp } from './subdomains'
+import { apiApp, proxyApp } from './subdomains'
 
 
 const server = express();
 const host   = process.env.SERVER_HOST; 
 
-server.set('trust proxy', true);
+server.set('trust proxy', 1);
+server.set('subdomain offset', 2);
 
 server.use(rateLimit({
     windowMs: 2 * 60 * 1000,        // 2 minute,
@@ -21,6 +22,7 @@ server.use(cors({ origin: "*" }));
 server.use(bodyParser.json());
 
 server.use(vhost(`api.${host}`, apiApp));
+server.use(vhost(`${process.env.PROXY_SUBDOMAIN_PREFIX}*.${host}`, proxyApp))
 
 // testoviy
 // server.use(vhost(`${host}`, apiApp));
