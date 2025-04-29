@@ -1,5 +1,5 @@
 import { BaseError } from "./index";
-import { ErrorCodeEnum } from "../enums";
+import { ErrorCodeEnum } from "../shared/enums";
 
 export class RequirementError extends BaseError {
     constructor(field: string, message?: string) {

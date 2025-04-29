@@ -1,10 +1,9 @@
 import express from 'express';
 import { sendError, sendSuccess, sendValidationError } from '../../../../../../../services';
 import { UpdateAccountPasswordBody } from '../../../../../validation';
-import { RequestWithUser } from '../../../../../../types';
 import { Repository, UserEntity } from '../../../../../../../domains';
 import { UpdateAccountPasswordResponse } from '../../../../../responses';
-import { UserAccountVerificationStatusEnum } from '../../../../../../enums';
+import { UserAccountVerificationStatusEnum, RequestWithUser } from '../../../../../../shared';
 
 export async function UpdateAccountPasswordController (req: RequestWithUser, res: express.Response) {
     try {

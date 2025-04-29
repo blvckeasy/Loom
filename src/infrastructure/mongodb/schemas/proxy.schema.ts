@@ -1,6 +1,6 @@
 import { modelOptions, prop, Severity } from "@typegoose/typegoose";
 import { Types } from "mongoose";
-import { ProxyStatusEnum } from "../../enums";
+import { ProxyStatusEnum } from "../../shared/enums";
 
 @modelOptions({
     options: {

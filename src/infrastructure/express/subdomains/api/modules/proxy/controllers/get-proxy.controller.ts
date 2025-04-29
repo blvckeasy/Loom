@@ -1,9 +1,8 @@
 import { Request, Response } from 'express';
 import { sendError, sendSuccess, sendValidationError } from '../../../../../../../services';
-import { UserRoleEnum } from '../../../../../../enums';
 import { GetProxiesQuery } from '../../../../../validation';
 import { getProxyListCase } from '../../../../../../../domains';
-import { ListInterface } from '../../../../../../interfaces';
+import { ListInterface, UserRoleEnum } from '../../../../../../shared';
 import { GetProxyListResponse } from '../../../../../responses';
 
 

@@ -1,5 +1,5 @@
 import { BaseCaseInterface, InvalidTokenError, NotFoundError, TokenExpiredError, UserNotFoundError, tokenConfig } from "../../infrastructure";
-import { ErrorCodeEnum } from "../../infrastructure/enums";
+import { ErrorCodeEnum } from "../../infrastructure/shared/enums";
 import { Token } from "../../services";
 import { UserEntity } from "../entities";
 import { Repository } from "../repositories";

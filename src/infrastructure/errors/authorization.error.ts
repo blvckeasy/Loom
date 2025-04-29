@@ -1,4 +1,4 @@
-import { ErrorCodeEnum } from "../enums";
+import { ErrorCodeEnum } from "../shared/enums";
 import { BaseError } from "./base.error";
 
 export class AuthorizationError extends BaseError {

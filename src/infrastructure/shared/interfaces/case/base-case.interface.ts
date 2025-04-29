@@ -1,4 +1,4 @@
-import { UserEntity } from "../../../domains";
+import { UserEntity } from "../../../../domains";
 import { LanguageEnum } from "../../enums";
 
 interface BaseRequestInterface {

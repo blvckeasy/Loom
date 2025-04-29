@@ -1,5 +1,5 @@
 import { BaseError } from "./base.error";
-import { ErrorCodeEnum } from "../enums";
+import { ErrorCodeEnum } from "../shared/enums";
 
 export class TokenExpiredError extends BaseError {
     constructor(message: string = "Token expired") {

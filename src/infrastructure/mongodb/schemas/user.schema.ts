@@ -1,6 +1,10 @@
 import { modelOptions, prop, Severity } from "@typegoose/typegoose";
 import { Types } from "mongoose";
-import { UserAccountVerificationStatusEnum, UserProfileStatusEnum, UserRoleEnum } from "../../enums";
+import { 
+    UserAccountVerificationStatusEnum, 
+    UserProfileStatusEnum, 
+    UserRoleEnum 
+} from "../../shared/enums";
 
 @modelOptions({
     options: {

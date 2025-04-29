@@ -1,6 +1,6 @@
 import express from 'express';
 import { Types } from "mongoose";
-import { UserAccountVerificationStatusEnum, UserProfileStatusEnum, UserRoleEnum } from "../../../enums";
+import { UserAccountVerificationStatusEnum, UserProfileStatusEnum, UserRoleEnum } from "../../../shared/enums";
 import { UserEntity } from "../../../../domains";
 
 export class UpdateAccountPasswordResponse {

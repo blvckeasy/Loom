@@ -3,10 +3,13 @@ import axios from 'axios';
 import { sendError, sendSuccess } from "../../../../../../../services";
 import { googleAuthConfig } from '../../../../../../config';
 import { Repository, UserEntity } from '../../../../../../../domains';
-import { UserInfoInterface } from '../../../../../../interfaces';
 import { AuthorizationError } from '../../../../../../errors';
 import { GoogleCallbackResponse } from '../../../../../responses';
-import { UserAccountVerificationStatusEnum, UserProfileStatusEnum } from '../../../../../../enums';
+import { 
+    UserAccountVerificationStatusEnum, 
+    UserProfileStatusEnum, 
+    UserInfoInterface 
+} from '../../../../../../shared';
 
 
 export async function GetGoogleCallbackController (req: express.Request, res: express.Response): Promise<void> {

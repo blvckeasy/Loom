@@ -1,7 +1,7 @@
 import { FilterQuery } from "mongoose";
-import { ProxyEntity } from "../../../../domains";
+import { UserEntity } from "../../../../../domains";
 import { BaseCRUDRepositoryInterface } from "../base";
 
-export interface ProxyRepositoryInterface extends BaseCRUDRepositoryInterface<ProxyEntity> {
+export interface UserRepositoryInterface extends BaseCRUDRepositoryInterface<UserEntity> {
     countDocumentsByFilter(filter: FilterQuery<any>): Promise<number>;
 }

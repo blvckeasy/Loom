@@ -5,7 +5,7 @@ import { sendError, sendSuccess, sendValidationError } from '../../../../../../.
 import { ProxyEntity, Repository } from '../../../../../../../domains';
 import { GetProxyByIdResponse } from '../../../../../responses';
 import { CreateProxyBody } from '../../../../../validation';
-import { RequestWithUser } from '../../../../../../types';
+import { RequestWithUser } from '../../../../../../shared';
 
 
 export async function CreateProxyController (req: RequestWithUser, res: Response): Promise<void> {  
