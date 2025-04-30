@@ -16,7 +16,7 @@ export async function UseMainController(req: express.Request, res: express.Respo
             throw new NotFoundError("Proxy");
         }
 
-        let response;
+        let response: any;
 
         try {
             response = await axios({

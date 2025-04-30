@@ -1,4 +1,4 @@
-# Use official Node.js LTS image
+# Official Node.js LTS image
 FROM node:20
 
 # Set working directory inside the container
@@ -9,6 +9,9 @@ COPY package*.json ./
 
 # Install dependencies
 RUN npm install
+
+# Install a specific TypeScript version globally (if needed)
+RUN npm install -g typescript@5.7.3
 
 # Copy the rest of your application code
 COPY . .

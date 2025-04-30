@@ -1,8 +1,9 @@
 import express from 'express';
 import { sendError, sendSuccess } from "../../../../../../../services";
 import { googleAuthConfig } from '../../../../../../config';
+import { CustomExpressRequest, CustomExpressResponse } from '../../../../../../shared';
 
-export async function GetGoogleURLController (req: express.Request, res: express.Response): Promise<void> {
+export async function GetGoogleURLController (req: CustomExpressRequest, res: CustomExpressResponse): Promise<void> {
     try {
         const CLIENT_ID         = googleAuthConfig.client_id;
         const REDIRECT_URI      = googleAuthConfig.redirect_uri;

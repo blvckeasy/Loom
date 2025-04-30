@@ -3,9 +3,9 @@ import { sendError, sendSuccess, sendValidationError } from '../../../../../../.
 import { UpdateAccountPasswordBody } from '../../../../../validation';
 import { Repository, UserEntity } from '../../../../../../../domains';
 import { UpdateAccountPasswordResponse } from '../../../../../responses';
-import { UserAccountVerificationStatusEnum, RequestWithUser } from '../../../../../../shared';
+import { UserAccountVerificationStatusEnum, CustomExpressRequest, CustomExpressResponse } from '../../../../../../shared';
 
-export async function UpdateAccountPasswordController (req: RequestWithUser, res: express.Response) {
+export async function UpdateAccountPasswordController (req: CustomExpressRequest, res: CustomExpressResponse) {
     try {
         let body: UpdateAccountPasswordBody;
         

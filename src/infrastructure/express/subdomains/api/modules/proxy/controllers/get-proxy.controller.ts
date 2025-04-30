@@ -1,12 +1,13 @@
-import { Request, Response } from 'express';
+import { Request } from 'express';
+import { ParsedQs } from 'qs';
 import { sendError, sendSuccess, sendValidationError } from '../../../../../../../services';
 import { GetProxiesQuery } from '../../../../../validation';
 import { getProxyListCase } from '../../../../../../../domains';
-import { ListInterface, UserRoleEnum } from '../../../../../../shared';
+import { CustomExpressRequest, CustomExpressResponse, ListInterface, UserRoleEnum } from '../../../../../../shared';
 import { GetProxyListResponse } from '../../../../../responses';
 
 
-export async function GetProxyController (req: Request, res: Response): Promise<void> {
+export async function GetProxyController (req: CustomExpressRequest, res: CustomExpressResponse): Promise<void> {
     try {
         const response: ListInterface<GetProxyListResponse> = {
             meta: {
@@ -21,7 +22,7 @@ export async function GetProxyController (req: Request, res: Response): Promise<
 
         let query: GetProxiesQuery;
 
-        let requestQuery: Request.Query;
+        let requestQuery: ParsedQs;
 
         if ([UserRoleEnum.CLIENT].includes(user._role)) {
             requestQuery = { ...req.query, user_id: user._id }

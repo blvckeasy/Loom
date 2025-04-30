@@ -5,11 +5,13 @@ import { sendError, sendSuccess, sendValidationError } from '../../../../../../.
 import { ProxyEntity, Repository } from '../../../../../../../domains';
 import { GetProxyByIdResponse } from '../../../../../responses';
 import { CreateProxyBody } from '../../../../../validation';
-import { RequestWithUser } from '../../../../../../shared';
+import { CustomExpressRequest, CustomExpressResponse } from '../../../../../../shared';
 
 
-export async function CreateProxyController (req: RequestWithUser, res: Response): Promise<void> {  
+export async function CreateProxyController (req: CustomExpressRequest, res: CustomExpressResponse): Promise<void> {  
+    
     let body: CreateProxyBody;
+
     try {
         body = await new CreateProxyBody(req.body).validate();
     } catch (error) {
@@ -46,6 +48,9 @@ export async function CreateProxyController (req: RequestWithUser, res: Response
         return sendSuccess(response, res);
         
     } catch (error) {
+
         return sendError(error, req, res);
+    
     }
+
 }

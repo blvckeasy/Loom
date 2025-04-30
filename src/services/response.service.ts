@@ -1,16 +1,16 @@
 import express from "express";
-import { RequirementError, InternalServerError, FailToMatchError, ErrorCodeEnum } from "../infrastructure";
+import { RequirementError, InternalServerError, FailToMatchError, ErrorCodeEnum, CustomExpressResponse, CustomExpressRequest } from "../infrastructure";
 import { writeErrorFile } from "./file.service";
 
 
-export function sendSuccess(data: any, res: express.Response, status = 200): void {
+export function sendSuccess(data: any, res: CustomExpressResponse, status = 200): void {
     return res.status(status).send({
         error: null,
         data: data,
     }).end();
 }
 
-export function sendError(error: any, req: express.Request, res: express.Response, status = 500): void {
+export function sendError(error: any, req: CustomExpressRequest, res: CustomExpressResponse, status = 500): void {
     switch (error.code) {
         case ErrorCodeEnum.NOT_FOUND:
             status = 404;
@@ -84,11 +84,9 @@ export function sendError(error: any, req: express.Request, res: express.Respons
     }).end();
 }
 
-export function sendValidationError(error: any, res: express.Response, status = 422): void {
+export function sendValidationError(error: any, res: CustomExpressResponse, status = 422): void {
     const label = error?.details[0]?.context?.label;
     const type = error?.details[0]?.type;
-
-    console.log(console.log(error.details[0].context.error));
 
     switch (type) {
         // TODO enter all JOI errors

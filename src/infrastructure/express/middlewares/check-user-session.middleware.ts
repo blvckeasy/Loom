@@ -2,10 +2,11 @@ import express from "express";
 import { TokenNotProvidedError } from "../../errors";
 import { sendError } from "../../../services";
 import { checkUserSessionCase } from "../../../domains";
+import { CustomExpressRequest, CustomExpressResponse } from "../../shared";
 
 export async function CheckUserSessionMiddleware(
-    req: express.Request,
-    res: express.Response,
+    req: CustomExpressRequest,
+    res: CustomExpressResponse,
     next: express.NextFunction
 ): Promise<void> {
     try {

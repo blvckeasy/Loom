@@ -8,11 +8,13 @@ import { GoogleCallbackResponse } from '../../../../../responses';
 import { 
     UserAccountVerificationStatusEnum, 
     UserProfileStatusEnum, 
-    UserInfoInterface 
+    UserInfoInterface, 
+    CustomExpressRequest,
+    CustomExpressResponse
 } from '../../../../../../shared';
 
 
-export async function GetGoogleCallbackController (req: express.Request, res: express.Response): Promise<void> {
+export async function GetGoogleCallbackController (req: CustomExpressRequest, res: CustomExpressResponse): Promise<void> {
     try {
 
         const { code } = req.query;

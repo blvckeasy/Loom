@@ -1,10 +1,10 @@
-import { Request, Response, NextFunction } from "express";
-import { LanguageEnum, RequirementError } from "../../../infrastructure";
+import { NextFunction } from "express";
+import { CustomExpressRequest, CustomExpressResponse, LanguageEnum } from "../../../infrastructure";
 import { sendError } from "../../../services";
 
 export async function ModernMiddleware(
-    req: Request,
-    res: Response,
+    req: CustomExpressRequest,
+    res: CustomExpressResponse,
     next: NextFunction
 ): Promise<void> {
     try {
