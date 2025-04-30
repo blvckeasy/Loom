@@ -2,7 +2,7 @@ import { Router } from 'express';
 import { CheckUserSessionMiddleware } from '../../../../middlewares';
 import { 
     UseMainController, 
-} from './conrollers';
+} from './controllers';
 
 const mainRouter = Router({ mergeParams: true });
 

@@ -15,7 +15,7 @@ async function bootstrap () {
     await mongodb.init();
     await rabbitmq.init();
 
-    server.listen(port, host, () => {
+    server.listen(port, () => {
         console.log(`server is running. URL: ${url}`);
     })
 }

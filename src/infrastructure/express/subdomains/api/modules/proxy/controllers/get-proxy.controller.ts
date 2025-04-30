@@ -1,4 +1,3 @@
-import { Request } from 'express';
 import { ParsedQs } from 'qs';
 import { sendError, sendSuccess, sendValidationError } from '../../../../../../../services';
 import { GetProxiesQuery } from '../../../../../validation';

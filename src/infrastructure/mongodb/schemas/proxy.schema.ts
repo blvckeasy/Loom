@@ -15,7 +15,7 @@ export class ProxySchema {
     server_subdomain: string;
 
     @prop({ required: true })
-    server_host: string;
+    server_domain: string;
 
     @prop({ required: true })
     user_ip: string;

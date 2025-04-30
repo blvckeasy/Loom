@@ -1,4 +1,3 @@
-import express from 'express';
 import { sendError, sendSuccess } from "../../../../../../../services";
 import { googleAuthConfig } from '../../../../../../config';
 import { CustomExpressRequest, CustomExpressResponse } from '../../../../../../shared';

@@ -7,7 +7,7 @@ export class ProxyEntity {
     public _id:                 Types.ObjectId;
     public _server_protocol:    string;
     public _server_subdomain:   string;
-    public _server_host:        string;
+    public _server_domain:        string;
     public _user_ip:            string;
     public _user_port:          number;
     public _status:             ProxyStatusEnum;
@@ -29,8 +29,8 @@ export class ProxyEntity {
         return this;
     }
     
-    buildServerHost (host: string): ProxyEntity {
-        this._server_host = host;
+    buildServerDomain (domain: string): ProxyEntity {
+        this._server_domain = domain;
         return this;
     }
 
@@ -72,7 +72,7 @@ export class ProxyEntity {
     }
 
     getServerHost(): string {
-        return this._server_host;
+        return this._server_domain;
     }
 
     getUserIP(): string {
@@ -84,7 +84,7 @@ export class ProxyEntity {
     }
 
     getProxyURL(): string {
-        return `${this._server_protocol}://${this._server_subdomain}.${this._server_host}`
+        return `${this._server_protocol}://${this._server_subdomain}.${this._server_domain}`
     }
 
     getStatus(): ProxyStatusEnum {
@@ -104,7 +104,7 @@ export class ProxyEntity {
             this.buildId(arg._id)
                 .buildServerProtocol(arg.server_protocol)
                 .buildServerSubdomain(arg.server_subdomain)
-                .buildServerHost(arg.server_host)
+                .buildServerDomain(arg.server_domain)
                 .buildUserIP(arg.user_ip)
                 .buildUserPort(arg.user_port)
                 .buildStatus(arg.status)
@@ -118,7 +118,7 @@ export class ProxyEntity {
             _id:                this._id,
             server_protocol:    this._server_protocol,
             server_subdomain:   this._server_subdomain,
-            server_host:        this._server_host,
+            server_domain:      this._server_domain,
             user_ip:            this._user_ip,
             user_port:          this._user_port,
             status:             this._status,

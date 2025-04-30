@@ -1,4 +1,3 @@
-import { Response } from 'express';
 import dockerNames from 'docker-names';
 import { v4 as uuidv4 } from 'uuid';
 import { sendError, sendSuccess, sendValidationError } from '../../../../../../../services';
@@ -27,7 +26,7 @@ export async function CreateProxyController (req: CustomExpressRequest, res: Cus
 
         const server_protocol = process.env.SERVER_PROTOCOL || 'http';
 
-        const server_host = process.env.SERVER_HOST || 'localhost';
+        const server_domain = process.env.SERVER_DOMAIN || 'localhost';
 
         const user_IP = req.headers['x-forwarded-for'] || req.socket.remoteAddress;
 
@@ -36,7 +35,7 @@ export async function CreateProxyController (req: CustomExpressRequest, res: Cus
         const newProxyEntity = new ProxyEntity()
             .buildServerProtocol(server_protocol)
             .buildServerSubdomain(server_subdomain)
-            .buildServerHost(server_host)
+            .buildServerDomain(server_domain)
             .buildUserIP(user_IP)
             .buildUserPort(user_port)
             .buildUserId(user._id)

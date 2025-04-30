@@ -1,4 +1,3 @@
-import express from 'express';
 import axios from 'axios';
 import { sendError, sendSuccess } from "../../../../../../../services";
 import { googleAuthConfig } from '../../../../../../config';

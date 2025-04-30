@@ -1,4 +1,3 @@
-import express from 'express';
 import { sendError, sendSuccess, sendValidationError } from '../../../../../../../services';
 import { UpdateAccountPasswordBody } from '../../../../../validation';
 import { Repository, UserEntity } from '../../../../../../../domains';
