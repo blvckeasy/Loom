@@ -4,10 +4,11 @@ import vhost from 'vhost';
 import cors from 'cors';
 import { rateLimit } from 'express-rate-limit';
 import { apiApp, proxyApp } from './subdomains'
+import { serverConfig } from '../config';
 
 
 const server = express();
-const host   = process.env.SERVER_HOST; 
+const domain = serverConfig.domain; 
 
 server.set('trust proxy', 1);
 server.set('subdomain offset', 2);
@@ -21,8 +22,8 @@ server.use(rateLimit({
 server.use(cors({ origin: "*" }));
 server.use(bodyParser.json());
 
-server.use(vhost(`api.${host}`, apiApp));
-server.use(vhost(`${process.env.PROXY_SUBDOMAIN_PREFIX}*.${host}`, proxyApp))
+server.use(vhost(`api.${domain}`, apiApp));
+server.use(vhost(`${process.env.PROXY_SUBDOMAIN_PREFIX}*.${domain}`, proxyApp))
 
 // testoviy
 // server.use(vhost(`${host}`, apiApp));
